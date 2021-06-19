@@ -1,0 +1,2 @@
+com/raphael/app2sorteionumero/BuildConfig.java
+ com.raphael.app2sorteionumero.BuildConfig
