@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CadastroPetsFoto</string>
+    <string name="titulo_lista">Lista de Pets</string>
+    <string name="titulo_cadastro">Cadastro de Pets</string>
+    <string-array name="opcoes_spinner">
+        <item>Macho</item>
+        <item>Fêmea</item>
+    </string-array>
+</resources>
