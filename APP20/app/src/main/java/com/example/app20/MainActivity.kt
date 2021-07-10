@@ -29,54 +29,52 @@ class MainActivity : AppCompatActivity() {
         respostaGIT = findViewById(R.id.txtGITResponse)
         carregamentoGIT = findViewById(R.id.prgLoading)
 
-        configureGITMask()
+
 
         botaoGIT.setOnClickListener {
             val git = campoGIT.text.toString()
             if(git.isNotEmpty()){
-                buscarGIT(git)
+                buscarUsuario(git)
             } else {
                 campoGIT.error = "Digite um GIT válido"
             }
         }
     }
 
-    fun buscarGIT(git: String){
+    fun buscarUsuario(login: String){
         val retrofitClient = Network.retrofitConfig("https://api.github.com/users/")
         val servico = retrofitClient.create(GitService::class.java)
 
-        CoroutineScope(IO).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = servico.buscarCEP(git.replace( "-", ""))
+                val response = servico.buscarUsuario(login)
 
-                withContext(Main){
-                    changeLoadingVisibility(isVisibile = true)
+                withContext(Dispatchers.Main){
+                    changeLoadingVisibility(isVisible = true)
                     delay(2000L)
                     if(response.isSuccessful){
-                        changeLoadingVisibility(isVisibile = false)
+                        changeLoadingVisibility(isVisible = false)
                         respostaGIT.text = response.body().toString()
                     }
                 }
-
-            } catch (e: Exception){
-                withContext(Main){
-                    changeLoadingVisibility(isVisibile = false)
+            }catch (e: Exception){
+                withContext(Dispatchers.Main){
+                    changeLoadingVisibility(isVisible = false)
                     respostaGIT.text = "Não foi possível processar a sua solicitação."
                 }
             }
         }
     }
 
-
-    fun changeLoadingVisibility(isVisibile: Boolean){
-        if(isVisibile){
+    fun changeLoadingVisibility(isVisible: Boolean){
+        if(isVisible){
             respostaGIT.text = ""
             carregamentoGIT.visibility = View.VISIBLE
             botaoGIT.visibility = View.INVISIBLE
+
         } else {
-            carregamentoGIT.visibility = View.INVISIBLE
-            botaoGIT.visibility = View.VISIBLE
+            carregamentoGIT.visibility = View.VISIBLE
+            botaoGIT.visibility = View.INVISIBLE
         }
     }
 }
-

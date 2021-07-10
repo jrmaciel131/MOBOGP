@@ -71,10 +71,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="Entre com seu Usuario"
             android:ems="10"
             android:id="@+id/edtGIT"
-            tools:layout_editor_absoluteX="99dp" app:layout_constraintBottom_toTopOf="@+id/btnBuscarGIT"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.495"/>
+            app:layout_constraintBottom_toTopOf="@+id/btnBuscarGIT"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.495"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:hint="Entre com seu Usuario"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@ interface GitService {
 
 
     @GET("{loginInserido}")
-    suspend fun buscarCEP(
+    suspend fun buscarUsuario(
         @Path("loginInserido") git: String
     ) : Response<GIT>
 }
