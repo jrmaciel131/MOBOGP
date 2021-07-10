@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Lista_De_Compras_RBD_SP_APP16"
