@@ -67,44 +67,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun configureGITMask(){
-        campoGIT.addTextChangedListener(object : TextWatcher {
-            var isUpdating: Boolean = false
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val str = s.toString().replace("-", "")
-                var mascara = ""
-                val mask = "#####-###"
-                if (isUpdating) {
-                    isUpdating = false
-                    return
-                }
-                var i = 0
-                for (m in mask.toCharArray()) {
-                    if (m != '#' && count > before) {
-                        mascara += m
-                        continue
-                    }
-                    try {
-                        mascara += str[i]
-                    } catch (e: Exception) {
-                        break
-                    }
-                    i++
-                }
-                isUpdating = true
-                campoGIT.setText(mascara)
-                campoGIT.setSelection(mascara.length)
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-        })
-    }
 
     fun changeLoadingVisibility(isVisibile: Boolean){
         if(isVisibile){
